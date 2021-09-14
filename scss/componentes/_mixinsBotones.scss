@@ -1,0 +1,41 @@
+@mixin boton {
+    cursor: pointer;
+	display: inline-block;
+	border: 0;
+	font-weight: bold;
+	padding: 10px 20px;
+	background: #ffffff;
+	color: #000000;
+	font-size: 15px;
+	border: 1px solid #000;
+	border-radius: 15px;
+	margin: 10px;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
+.boton {
+	@include boton;
+    i:hover {
+        opacity: .8;
+    }
+}
+
+.botonCarusel {
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	border: 0;
+	font-weight: bold;
+	padding: 10px 20px;
+	background: #00000052;
+	font-size: 15px;
+	border: 1px solid #fff;
+	border-radius: 15px;
+	margin: 10px;
+    :hover {
+        opacity: .8;
+    }
+}

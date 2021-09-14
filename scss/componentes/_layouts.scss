@@ -1,0 +1,32 @@
+/* SOCIAL */
+.social {
+	margin: 15px;
+	
+} 
+
+.contactanos {
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 8	px;
+}
+
+.links {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    a {
+        margin: 0 30px;
+        i {
+            font-size: 3rem;
+            cursor: pointer;
+            :hover {
+                opacity: .8;
+            }
+        }
+    }
+}
+
+.footer {
+	font-size: 20px;
+	text-align: center;
+}
