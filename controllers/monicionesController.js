@@ -24,5 +24,4 @@ module.exports={
             ciclo: req.params.ciclo
         });
     }
-
 }
