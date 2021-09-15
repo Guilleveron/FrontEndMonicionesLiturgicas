@@ -15,7 +15,7 @@
             const row = document.createElement("tr");
                 let monicionAMostrar = document.querySelector('#monicionSeleccionada');
                 row.innerHTML += `
-                  <h4>${monicion[0].titulo} del tiempo ${monicion[0].tiempo}</h4>
+                    <h4>${monicion[0].titulo} del tiempo ${monicion[0].tiempo}</h4>
                     <p><b>Ciclo: </b>${monicion[0].ciclo}</p>
                     <h5>Monición de Entrada</h5>
                     <p>${monicion[0].entrada}</p>
@@ -42,17 +42,6 @@
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
 cargarMonicionDelDia();
-
-function mostrar(id) {
-    let elemento = document.getElementById(id);
-    elemento.style.display = 'inline-block';
-}
-
-function cerrar(id) {
-    let elemento = document.getElementById(id);
-    elemento.style.display = 'none';
-}
-
 
 </script>
 <%- include ../layouts/social.ejs %>
