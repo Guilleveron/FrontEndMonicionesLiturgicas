@@ -1,14 +1,13 @@
 @mixin boton {
     cursor: pointer;
 	display: inline-block;
-	border: 0;
 	font-weight: bold;
 	padding: 10px 20px;
-	background: #ffffff;
-	color: #000000;
+	background: $blanco;
+	color: $primary;
 	font-size: 15px;
-	border: 1px solid #000;
-	border-radius: 15px;
+	border: 1px solid $primary;
+	border-radius: 10px;
 	margin: 10px;
 
     &:hover {
@@ -23,19 +22,27 @@
     }
 }
 
-.botonCarusel {
-	color: #fff;
-	cursor: pointer;
+@mixin boton2 {
+    cursor: pointer;
 	display: inline-block;
-	border: 0;
 	font-weight: bold;
 	padding: 10px 20px;
-	background: #00000052;
+	background: $primary;
+	color: $blanco;
 	font-size: 15px;
-	border: 1px solid #fff;
-	border-radius: 15px;
+	border: 1px solid $primary;
+	border-radius: 10px;
 	margin: 10px;
-    :hover {
+
+    &:hover {
+		color: $blanco;
         opacity: .8;
+    }
+}
+
+.boton2 {
+	@include boton2;
+    i:hover {
+		opacity: .8;
     }
 }

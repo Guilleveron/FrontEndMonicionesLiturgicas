@@ -1,12 +1,36 @@
 <%- include ./layouts/cabecera.ejs %> 
 <br>
+<h2>Monicion del Día <p id="fecha"></p></h2>
+<script type="text/javascript">
+
+  var d = new Date();
+  
+  document.write('Fecha: '+d.getDate(),'<br>Dia de la semana: '+d.getDay(),'<br>Mes (0 al 11): '+d.getMonth(),'<br>Año:'+d.getFullYear(),'<br>Hora:'+d.getHours(),'<br>HoraUTC: '+d.getUTCHours(),'<br>Minutos: '+d.getMinutes(),'<br>Segundos: '+d.getSeconds());
+  
+</script>
+<script type="text/javascript">
+  var fecha = new Date(); 
+  
+  var dia = fecha.getDay();
+
+  var semana0 = "Hoy es domingo " + " de " + fecha.getMonth() + " del " + fecha.getFullYear(); 
+  var semana1 = "Hoy es lunes "; 
+  var semana2 = "Hoy es martes "; 
+  var semana3 = "Hoy es miércoles "; 
+  var semana4 = "Hoy es jueves "; 
+  var semana5 = "Hoy es viernes " + "de" + fecha.getMonth() + "del" + fecha.getFullYear(); 
+  var semana6 = "Hoy es sábado "; 
+  
+  alert( eval("semana" + dia) );
+  </script>
+
 <!-- SHOWCASE - Monicion del Dia-->
 <header class="showcase">
   <div id="monicionDelDia"></div>	
 </header>
 
 
-<h2>Moniciones Especiales</h2>
+<h2>Moniciones Diarias</h2>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -34,9 +58,9 @@
   </button>
 </div>
 <br>
-
+<h2>Monicion Especial</h2>
   <section class="banner-one">
-    <div id="monicionFestividadPatronal"></div>	
+    <div class="container-lg" id="monicionFestividadPatronal"></div>	
   </section>
 
 <h2>Moniciones Dominicales</h2>
@@ -53,12 +77,19 @@
     </div>
 
 <br>
+<h2>Monicion Mariana</h2>
   <section class="banner-two" >
-    <div id="monicionFestividadMariana"></div>
+    <div class="container-lg" id="monicionFestividadMariana"></div>
   </section>
 
 
 <script>
+
+let dia = new Date();
+document.write(dia.getDate());
+
+
+
   function cargarMonicionDelDia(id){
     fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
         .then(respuesta =>{return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
@@ -75,7 +106,7 @@
                       <p>${monicion[0].lecturas}</p>
                       <h5>Oración Universal</h5>
                       <p>A cada intención respondemos: <b>${monicion[0].respuestaOracionUniversal}</b><br></p>
-                    <a class="boton" id="boton${monicion[0].id}" onclick="cerrar('boton${monicion[0].id}');mostrar('flotante${monicion[0].id}')" >Leer más   <i class="fas fa-book-reader"></i></a>
+                    <a class="btn btn-primary" id="boton${monicion[0].id}" onclick="cerrar('boton${monicion[0].id}');mostrar('flotante${monicion[0].id}')" >Leer más   <i class="fas fa-book-reader"></i></a>
                     <div class="flotantes" id="flotante${monicion[0].id}">
                       <ol>
                           <li>${monicion[0].oracionUniversal1} <b>Oremos.</b></li>
@@ -90,7 +121,7 @@
                       <p>${monicion[0].comunion}</p>
                       <h5>Monición de Despedida</h5>
                       <p>${monicion[0].despedida}</p>
-                      <a class="boton" onclick="mostrar('boton${monicion[0].id}');cerrar('flotante${monicion[0].id}')">Cerrar  <i class="far fa-times-circle"></i></a>
+                      <a class="btn btn-primary" onclick="mostrar('boton${monicion[0].id}');cerrar('flotante${monicion[0].id}')">Cerrar  <i class="far fa-times-circle"></i></a>
                     </div>
                   `;
                   monicionAMostrar.appendChild(row);
@@ -106,11 +137,11 @@ function cargarMonicionElegida(id, idSelector){
             const row = document.createElement("tr");
             let monicionAMostrar = document.querySelector(idSelector);
             row.innerHTML += `
-            <h4>${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana}</h4>
+              <h4>${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana}</h4>
                 <p><b>Ciclo:</b> ${monicion[0].ciclo} - <b>Tiempo:</b> ${monicion[0].tiempo}</p>
                 <h5>Monición de Entrada</h5>
                     <p>${monicion[0].entrada}</p>
-                <a class="boton" id="boton${monicion[0].id}" onclick="cerrar('boton${monicion[0].id}');mostrar('flotante${monicion[0].id}')" >Leer más <i class="fas fa-book-reader"></i></a>
+                <a class="btn btn-primary m-3" id="boton${monicion[0].id}" onclick="cerrar('boton${monicion[0].id}');mostrar('flotante${monicion[0].id}')" >Leer más <i class="fas fa-book-reader"></i></a>
                 <div class="flotantes" id="flotante${monicion[0].id}">
                     <h5>Monición de las Lecturas</h5>
                     <p>${monicion[0].lecturas}</p>
@@ -129,7 +160,7 @@ function cargarMonicionElegida(id, idSelector){
                     <p>${monicion[0].comunion}</p>
                     <h5>Monición de Despedida</h5>
                     <p>${monicion[0].despedida}</p>
-                    <a class="boton" onclick="mostrar('boton${monicion[0].id}');cerrar('flotante${monicion[0].id}')">Cerrar  <i class="far fa-times-circle"></i></a>
+                    <a class="btn btn-primary m-2" onclick="mostrar('boton${monicion[0].id}');cerrar('flotante${monicion[0].id}')">Cerrar  <i class="far fa-times-circle"></i></a>
                 </div>
                 `;
             monicionAMostrar.appendChild(row);
@@ -157,10 +188,10 @@ function cargarMonicionCarousel(id, idSelector, img){
             let monicionAMostrar = document.querySelector(idSelector);
             const row = document.createElement("div");
                 row.innerHTML += `
-                  <a href="/moniciones/${monicion[0].id}" target="_blank"><img src="${img}" class="d-block w-100" alt="Monición del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo}- Moniciones Liturgicas.com"></a>
+                  <a href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&dia=${monicion[0].dia}&semana=${monicion[0].semana}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank"><img src="${img}" class="d-block w-100" alt="Monición del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo}- Moniciones Liturgicas.com"></a>
                   <div class="carousel-caption d-none d-md-block">
                     <h5>Monicion del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo} - Ciclo ${monicion[0].ciclo}</h5>
-                    <a class="botonCarusel" href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&dia=${monicion[0].dia}&semana=${monicion[0].semana}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
+                    <a class="btn btn-light" href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&dia=${monicion[0].dia}&semana=${monicion[0].semana}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
                   </div>  
                     `;
                 monicionAMostrar.appendChild(row);
@@ -181,7 +212,7 @@ function cargarMonicionSyD(id, idSelector, img){
                 <a href="/moniciones/${monicion[0].id}" target="_blank"><img src="${img}" class="card-img-top" alt="${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo} - MonicionesLitúrgicas.com"><a>
                     <div class="card-body">
                       <h5 class="card-title">Monicion del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo} - Ciclo ${monicion[0].ciclo}</h5>
-                        <a class="botonCarusel" href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
+                        <a class="btn btn-outline-secondary" href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
                     </div>
                     `;
                 monicionAMostrar.appendChild(row);
