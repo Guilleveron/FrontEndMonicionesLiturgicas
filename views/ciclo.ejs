@@ -91,12 +91,12 @@ function cargarMoniciones(ciclo, tiempo, idSelector){
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             let monicionAMostrar = document.querySelector(idSelector);
-            console.log(monicion);
+            //console.log(monicion);
             monicion.forEach(monicion => {
                 const row = document.createElement("tr");
                 row.innerHTML += `
                 <ul>
-                    <li class="lista"><a href="/moniciones/${monicion.titulo}/${monicion.ciclo}/${monicion.tiempo}" target="_blank"><i class="fas fa-cross"></i>  ${monicion.titulo} <i class="fas fa-angle-double-right"></i></a></li>
+                    <li class="lista"><a href="/moniciones/${monicion.id}?titulo=${monicion.titulo}&dia=${monicion.dia}&semana=${monicion.semana}&ciclo=${monicion.ciclo}&tiempo=${monicion.tiempo}" target="_blank"><i class="fas fa-cross"></i>${monicion.titulo} ${monicion.dia} ${monicion.semana}<i class="fas fa-angle-double-right"></i></a></li>
                 </ul>  
                 `;
                 monicionAMostrar.appendChild(row);

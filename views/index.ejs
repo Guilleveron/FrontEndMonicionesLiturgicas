@@ -59,15 +59,15 @@
 
 
 <script>
-  function cargarMonicionDelDia(titulo, ciclo, tiempo){
-    fetch(`http://localhost:7000/api/moniciones/${titulo}/${ciclo}/${tiempo}`, {method: 'GET'})
+  function cargarMonicionDelDia(id){
+    fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
         .then(respuesta =>{return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             //console.log(monicion);
             const row = document.createElement("tr");
                 let monicionAMostrar = document.querySelector('#monicionDelDia');
                 row.innerHTML += `
-                  <h4>${monicion[0].titulo} del tiempo ${monicion[0].tiempo}</h4>
+                  <h4>${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo}</h4>
                     <p><b>Ciclo: </b>${monicion[0].ciclo}</p>
                     <h5>Monición de Entrada</h5>
                     <p>${monicion[0].entrada}</p>
@@ -75,8 +75,8 @@
                       <p>${monicion[0].lecturas}</p>
                       <h5>Oración Universal</h5>
                       <p>A cada intención respondemos: <b>${monicion[0].respuestaOracionUniversal}</b><br></p>
-                    <a class="boton" id="boton${monicion[0].titulo}" onclick="cerrar('boton${monicion[0].titulo}');mostrar('flotante${monicion[0].titulo}')" >Leer más   <i class="fas fa-book-reader"></i></a>
-                    <div class="flotantes" id="flotante${monicion[0].titulo}">
+                    <a class="boton" id="boton${monicion[0].id}" onclick="cerrar('boton${monicion[0].id}');mostrar('flotante${monicion[0].id}')" >Leer más   <i class="fas fa-book-reader"></i></a>
+                    <div class="flotantes" id="flotante${monicion[0].id}">
                       <ol>
                           <li>${monicion[0].oracionUniversal1} <b>Oremos.</b></li>
                           <li>${monicion[0].oracionUniversal2} <b>Oremos.</b></li>
@@ -90,23 +90,23 @@
                       <p>${monicion[0].comunion}</p>
                       <h5>Monición de Despedida</h5>
                       <p>${monicion[0].despedida}</p>
-                      <a class="boton" onclick="mostrar('boton${monicion[0].titulo}');cerrar('flotante${monicion[0].titulo}')">Cerrar  <i class="far fa-times-circle"></i></a>
+                      <a class="boton" onclick="mostrar('boton${monicion[0].id}');cerrar('flotante${monicion[0].id}')">Cerrar  <i class="far fa-times-circle"></i></a>
                     </div>
                   `;
                   monicionAMostrar.appendChild(row);
         })
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
-cargarMonicionDelDia('XXII Domingo', 'B', 'Ordinario');
+cargarMonicionDelDia('6');
 
-function cargarMonicionElegida(titulo, ciclo, tiempo, idSelector){
-    fetch(`http://localhost:7000/api/moniciones/${titulo}/${ciclo}/${tiempo}`, {method: 'GET'})
+function cargarMonicionElegida(id, idSelector){
+    fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             const row = document.createElement("tr");
             let monicionAMostrar = document.querySelector(idSelector);
             row.innerHTML += `
-            <h4>${monicion[0].titulo}</h4>
+            <h4>${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana}</h4>
                 <p><b>Ciclo:</b> ${monicion[0].ciclo} - <b>Tiempo:</b> ${monicion[0].tiempo}</p>
                 <h5>Monición de Entrada</h5>
                     <p>${monicion[0].entrada}</p>
@@ -137,8 +137,8 @@ function cargarMonicionElegida(titulo, ciclo, tiempo, idSelector){
     .catch(error => console.log("Hubo un Error: " + error.message))
 }
 
-cargarMonicionElegida('XXXIV Domingo - Solemnidad de Cristo Rey del Universo', 'B', 'Ordinario', "#monicionFestividadPatronal");
-cargarMonicionElegida('Solemnidad de la Asunción de la Santísima Virgen María', 'B', 'Ordinario',"#monicionFestividadMariana");
+cargarMonicionElegida('17', "#monicionFestividadPatronal");
+cargarMonicionElegida('3',"#monicionFestividadMariana");
 
 function mostrar(id) {
     let elemento = document.getElementById(id);
@@ -150,47 +150,47 @@ function cerrar(id) {
     elemento.style.display = 'none';
 }
 
-function cargarMonicionCarousel(titulo, ciclo, tiempo, idSelector, img){
-    fetch(`http://localhost:7000/api/moniciones/${titulo}/${ciclo}/${tiempo}`, {method: 'GET'})
+function cargarMonicionCarousel(id, idSelector, img){
+    fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             let monicionAMostrar = document.querySelector(idSelector);
             const row = document.createElement("div");
                 row.innerHTML += `
-                  <a href="/moniciones/${monicion[0].titulo}/${monicion[0].ciclo}/${monicion[0].tiempo}" target="_blank"><img src="${img}" class="d-block w-100" alt="Monición del ${monicion[0].titulo} - Moniciones Liturgicas.com"></a>
+                  <a href="/moniciones/${monicion[0].id}" target="_blank"><img src="${img}" class="d-block w-100" alt="Monición del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo}- Moniciones Liturgicas.com"></a>
                   <div class="carousel-caption d-none d-md-block">
-                    <h5>Monición del ${monicion[0].titulo} del tiempo ${monicion[0].tiempo} <br> Ciclo ${monicion[0].ciclo}</h5>
-                    <a class="botonCarusel" href="/moniciones/${monicion[0].titulo}/${monicion[0].ciclo}/${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
+                    <h5>Monicion del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo} - Ciclo ${monicion[0].ciclo}</h5>
+                    <a class="botonCarusel" href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&dia=${monicion[0].dia}&semana=${monicion[0].semana}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
                   </div>  
                     `;
                 monicionAMostrar.appendChild(row);
         })
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
-cargarMonicionCarousel('XXIII Domingo', 'B', 'Ordinario', "#carousel1", "/images/Miercoles.jpg");
-cargarMonicionCarousel('XXIV Domingo', 'B', 'Ordinario', "#carousel2", "/images/Domingo.jpg");
-cargarMonicionCarousel('XXV Domingo', 'B', 'Ordinario', "#carousel3", "/images/Viernes.jpg");
+cargarMonicionCarousel('3', "#carousel1", "/images/Miercoles.jpg");
+cargarMonicionCarousel('12', "#carousel2", "/images/Domingo.jpg");
+cargarMonicionCarousel('13', "#carousel3", "/images/Viernes.jpg");
 
-function cargarMonicionSyD(titulo, ciclo, tiempo, idSelector, img){
-    fetch(`http://localhost:7000/api/moniciones/${titulo}/${ciclo}/${tiempo}`, {method: 'GET'})
+function cargarMonicionSyD(id, idSelector, img){
+    fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             let monicionAMostrar = document.querySelector(idSelector);
             const row = document.createElement("tr");
                 row.innerHTML += `
-                <a href="/moniciones/${monicion[0].titulo}/${monicion[0].ciclo}/${monicion[0].tiempo}" target="_blank"><img src="${img}" class="card-img-top" alt="MonicionesLitúrgicas.com"><a>
+                <a href="/moniciones/${monicion[0].id}" target="_blank"><img src="${img}" class="card-img-top" alt="${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo} - MonicionesLitúrgicas.com"><a>
                     <div class="card-body">
-                      <h5 class="card-title">Monicion del ${monicion[0].titulo} del tiempo ${monicion[0].tiempo} - Ciclo ${monicion[0].ciclo}</h5>
-                        <a class="botonCarusel" href="/moniciones/${monicion[0].titulo}/${monicion[0].ciclo}/${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
+                      <h5 class="card-title">Monicion del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo} - Ciclo ${monicion[0].ciclo}</h5>
+                        <a class="botonCarusel" href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
                     </div>
                     `;
                 monicionAMostrar.appendChild(row);
         })
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
-cargarMonicionSyD('XXVII Domingo', 'B', 'Ordinario', "#mDominical1", "/images/Sabado.jpg");
-cargarMonicionSyD('XXVIII Domingo', 'B', 'Ordinario', "#mDominical2", "/images/Lunes.jpg");
-cargarMonicionSyD('XXIX Domingo', 'B', 'Ordinario', "#mDominical3", "/images/Miercoles.jpg");
+cargarMonicionSyD('17', "#mDominical1", "/images/Sabado.jpg");
+cargarMonicionSyD('18', "#mDominical2", "/images/Lunes.jpg");
+cargarMonicionSyD('19', "#mDominical3", "/images/Miercoles.jpg");
 
 </script>
 
