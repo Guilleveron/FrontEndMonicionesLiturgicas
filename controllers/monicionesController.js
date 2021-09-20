@@ -19,7 +19,8 @@ module.exports={
     ciclo:function(req,res){
         //console.log(req.params);
         res.render('ciclo', { 
-            ciclo: req.params.ciclo
+            ciclo: req.params.ciclo,
+            santo: req.query.santo
         });
     }
 }
