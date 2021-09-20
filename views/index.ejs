@@ -1,32 +1,9 @@
 <%- include ./layouts/cabecera.ejs %> 
 <br>
-<h2>Monicion del Día <p id="fecha"></p></h2>
-<script type="text/javascript">
-
-  var d = new Date();
-  
-  document.write('Fecha: '+d.getDate(),'<br>Dia de la semana: '+d.getDay(),'<br>Mes (0 al 11): '+d.getMonth(),'<br>Año:'+d.getFullYear(),'<br>Hora:'+d.getHours(),'<br>HoraUTC: '+d.getUTCHours(),'<br>Minutos: '+d.getMinutes(),'<br>Segundos: '+d.getSeconds());
-  
-</script>
-<script type="text/javascript">
-  var fecha = new Date(); 
-  
-  var dia = fecha.getDay();
-
-  var semana0 = "Hoy es domingo " + " de " + fecha.getMonth() + " del " + fecha.getFullYear(); 
-  var semana1 = "Hoy es lunes "; 
-  var semana2 = "Hoy es martes "; 
-  var semana3 = "Hoy es miércoles "; 
-  var semana4 = "Hoy es jueves "; 
-  var semana5 = "Hoy es viernes " + "de" + fecha.getMonth() + "del" + fecha.getFullYear(); 
-  var semana6 = "Hoy es sábado "; 
-  
-  alert( eval("semana" + dia) );
-  </script>
 
 <!-- SHOWCASE - Monicion del Dia-->
 <header class="showcase">
-  <div id="monicionDelDia"></div>	
+  <div id="monicionDelDia"></div>
 </header>
 
 
@@ -84,12 +61,6 @@
 
 
 <script>
-
-let dia = new Date();
-document.write(dia.getDate());
-
-
-
   function cargarMonicionDelDia(id){
     fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
         .then(respuesta =>{return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
@@ -97,7 +68,12 @@ document.write(dia.getDate());
             //console.log(monicion);
             const row = document.createElement("tr");
                 let monicionAMostrar = document.querySelector('#monicionDelDia');
+                const event = new Date();
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                //alert(event.toLocaleDateString(undefined, options));
+                let dia = event.toLocaleDateString(undefined, options);
                 row.innerHTML += `
+                  <h3>Monicion del Día ${dia}</h3>
                   <h4>${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo}</h4>
                     <p><b>Ciclo: </b>${monicion[0].ciclo}</p>
                     <h5>Monición de Entrada</h5>
