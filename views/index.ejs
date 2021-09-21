@@ -61,11 +61,11 @@
 
 
 <script>
-  function cargarMonicionDelDia(id){
-    fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
+  function cargarMonicionDelDia(fecha){
+    fetch(`http://localhost:7000/api/moniciones/fecha/${fecha}`, {method: 'GET'})
         .then(respuesta =>{return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
-            //console.log(monicion);
+            //console.log(monicion[0].fecha);
             const row = document.createElement("tr");
                 let monicionAMostrar = document.querySelector('#monicionDelDia');
                 const event = new Date();
@@ -74,8 +74,8 @@
                 let dia = event.toLocaleDateString(undefined, options);
                 row.innerHTML += `
                   <h3>Monicion del Día ${dia}</h3>
-                  <h4>${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo}</h4>
-                    <p><b>Ciclo: </b>${monicion[0].ciclo}</p>
+                  <h4>${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana}</h4>
+                    <p><b>Ciclo ${monicion[0].ciclo} - Tiempo ${monicion[0].tiempo}</b><img class="imgC" src="/images/casullaVerde.svg" alt="Moniciones Litúrgicas"> </h5></p>
                     <h5>Monición de Entrada</h5>
                     <p>${monicion[0].entrada}</p>
                     <h5>Monición de las Lecturas</h5>
@@ -104,7 +104,34 @@
         })
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
-cargarMonicionDelDia('6');
+
+window.onload = function ejemplo2(){
+  setTimeout('funcionProgramada()', hora());
+}
+
+function hora() {
+  horaActual = new Date();
+  horaProgramada = new Date();
+  horaProgramada.setHours(0);
+  horaProgramada.setMinutes(0);
+  horaProgramada.setSeconds(2);
+  return horaProgramada.getTime() - horaActual.getTime();
+}
+
+function funcionProgramada() {
+  let objFecha = new Date();
+  let dia  = ('0' + objFecha.getDate()).slice(-2);
+  let mes  = ('0' + (objFecha.getMonth()+1)).slice(-2);
+  let anio = objFecha.getFullYear();
+  cargarMonicionDelDia(anio + "-" + mes + "-" + dia);
+}
+
+
+
+
+
+
+
 
 function cargarMonicionElegida(id, idSelector){
     fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})

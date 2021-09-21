@@ -37,7 +37,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne3">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne3" aria-expanded="false" aria-controls="flush-collapseOne3">
-                            <h5><img class="imgC" src="/images/corona de Adviento.png" alt="Moniciones Litúrgicas - Ordinario"> Tiempo de Ordinario <img class="imgC" src="/images/casullaVerde.svg" alt="Moniciones Litúrgicas - Ordinario"></h5>
+                            <h5>Tiempo de Ordinario <img class="imgC" src="/images/casullaVerde.svg" alt="Moniciones Litúrgicas - Ordinario"></h5>
                         </button>
                     </h2>
                     <div id="flush-collapseOne3" class="accordion-collapse collapse" aria-labelledby="flush-headingOne3" data-bs-parent="#accordionFlushExample1">
@@ -101,7 +101,7 @@ function cargarMoniciones(ciclo, tiempo, idSelector){
                 const row = document.createElement("tr");
                 row.innerHTML += `
                 <ul>
-                    <li class="lista"><a href="/moniciones/${monicion.id}?titulo=${monicion.titulo}&dia=${monicion.dia}&semana=${monicion.semana}&ciclo=${monicion.ciclo}&tiempo=${monicion.tiempo}" target="_blank"><i class="fas fa-cross"></i>${monicion.titulo} ${monicion.dia} ${monicion.semana}<i class="fas fa-angle-double-right"></i></a></li>
+                    <li class="lista"><a href="/moniciones/${monicion.id}?titulo=${monicion.titulo}&dia=${monicion.dia}&semana=${monicion.semana}&ciclo=${monicion.ciclo}&tiempo=${monicion.tiempo}" target="_blank"><i class="fas fa-cross"></i> ${monicion.titulo} ${monicion.dia} ${monicion.semana}<i class="fas fa-angle-double-right"></i></a></li>
                 </ul>  
                 `;
                 monicionAMostrar.appendChild(row);
