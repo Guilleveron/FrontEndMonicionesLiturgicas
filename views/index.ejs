@@ -103,27 +103,6 @@
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
 
-window.onload = function ejemplo2(){
-  setTimeout('funcionProgramada()', hora());
-}
-
-function hora() {
-  horaActual = new Date();
-  horaProgramada = new Date();
-  horaProgramada.setHours(0);
-  horaProgramada.setMinutes(0);
-  horaProgramada.setSeconds(2);
-  return horaProgramada.getTime() - horaActual.getTime();
-}
-
-function funcionProgramada() {
-  let objFecha = new Date();
-  let dia  = ('0' + objFecha.getDate()).slice(-2);
-  let mes  = ('0' + (objFecha.getMonth()+1)).slice(-2);
-  let anio = objFecha.getFullYear();
-  cargarMonicionDelDia(anio + "-" + mes + "-" + dia);
-}
-
 function cargarMonicionElegida(id, idSelector){
     fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
@@ -175,8 +154,8 @@ function cerrar(id) {
     elemento.style.display = 'none';
 }
 
-function cargarMonicionCarousel(id, idSelector, img){
-    fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
+function cargarMonicionCarousel(fecha, idSelector, img){
+    fetch(`http://localhost:7000/api/moniciones/fecha/${fecha}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             let monicionAMostrar = document.querySelector(idSelector);
@@ -192,12 +171,9 @@ function cargarMonicionCarousel(id, idSelector, img){
         })
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
-cargarMonicionCarousel('3', "#carousel1", "/images/Miercoles.jpg");
-cargarMonicionCarousel('12', "#carousel2", "/images/Domingo.jpg");
-cargarMonicionCarousel('13', "#carousel3", "/images/Viernes.jpg");
 
-function cargarMonicionSyD(id, idSelector, img){
-    fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
+function cargarMonicionD(fecha, idSelector, img){
+    fetch(`http://localhost:7000/api/moniciones/fecha/${fecha}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             let monicionAMostrar = document.querySelector(idSelector);
@@ -213,9 +189,59 @@ function cargarMonicionSyD(id, idSelector, img){
         })
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
-cargarMonicionSyD('17', "#mDominical1", "/images/Sabado.jpg");
-cargarMonicionSyD('18', "#mDominical2", "/images/Lunes.jpg");
-cargarMonicionSyD('19', "#mDominical3", "/images/Miercoles.jpg");
+
+
+window.onload = function ejemplo2(){
+  setTimeout('funcionProgramada()', hora());
+}
+
+function hora() {
+  horaActual = new Date();
+  horaProgramada = new Date();
+  horaProgramada.setHours(0);
+  horaProgramada.setMinutes(0);
+  horaProgramada.setSeconds(2);
+  return horaProgramada.getTime() - horaActual.getTime();
+}
+
+function sumarDias(fecha, dias){
+  fecha.setDate(fecha.getDate() + dias);
+  return fecha;
+}
+
+function funcionProgramada() {
+  let objFecha = new Date();
+  let dia  = ('0' + objFecha.getDate()).slice(-2);
+  let mes  = ('0' + (objFecha.getMonth()+1)).slice(-2);
+  let anio = objFecha.getFullYear();
+  cargarMonicionDelDia(anio + "-" + mes + "-" + dia);
+  
+  let objFecha2 = sumarDias(objFecha, 1);
+  let dia2  = ('0' + objFecha2.getDate()).slice(-2);
+  let mes2  = ('0' + (objFecha2.getMonth()+1)).slice(-2);
+  let anio2 = objFecha2.getFullYear();
+  cargarMonicionCarousel(anio2 + "-" + mes2 + "-" + dia2, "#carousel1", "/images/Viernes.jpg");
+  //console.log(anio2 + "-" + mes2 + "-" + dia2);
+
+  let objFecha3 = sumarDias(objFecha, 1);
+  let dia3  = ('0' + objFecha3.getDate()).slice(-2);
+  let mes3  = ('0' + (objFecha3.getMonth()+1)).slice(-2);
+  let anio3 = objFecha3.getFullYear();
+  cargarMonicionCarousel(anio3 + "-" + mes3 + "-" + dia3, "#carousel2", "/images/Sabado.jpg");
+  //console.log(anio3 + "-" + mes3 + "-" + dia3);
+  
+  let objFecha4 = sumarDias(objFecha, 1);
+  let dia4  = ('0' + objFecha4.getDate()).slice(-2);
+  let mes4  = ('0' + (objFecha4.getMonth()+1)).slice(-2);
+  let anio4 = objFecha4.getFullYear();
+  cargarMonicionCarousel(anio4 + "-" + mes4 + "-" + dia4, "#carousel3", "/images/Domingo.jpg");
+  //console.log(anio4 + "-" + mes4 + "-" + dia4);
+}
+
+
+cargarMonicionD('2021-09-26', "#mDominical1", "/images/Martes.jpg");
+cargarMonicionD('2021-10-03', "#mDominical2", "/images/Miercoles.jpg");
+cargarMonicionD('2021-10-10', "#mDominical3", "/images/Jueves.jpg");
 
 </script>
 
