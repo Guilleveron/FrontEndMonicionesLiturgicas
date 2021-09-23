@@ -4,9 +4,9 @@ $secondary: #005691;
 $tercero: #f8f9fa;
 $cuarto: #FAFAFA;
 $blanco: #fff;
+$gris: #787878;
 
-
-
+@import "componentes/Buscador";
 @import "componentes/Ciclos";
 @import "componentes/index";
 @import "componentes/indexMoniciones";

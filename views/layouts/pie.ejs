@@ -1,10 +1,92 @@
-<!-- COPYRIGHT 2021 -->
-    <footer class="footer">
-        <p>Copyright © 2021 Moniciones Litúrgicas. Todos los derechos reservados.</p>
-    </footer>
+        <!-- COPYRIGHT 2021 -->
+        <footer class="footer">
+            <p>Copyright © 2021 Moniciones Litúrgicas. Todos los derechos reservados.</p>
+        </footer>
     </div>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
-</body>
+<script>
+    //Buscador de contenido
+
+//Ejecutando funciones
+document.getElementById("icon-search").addEventListener("click", mostrar_buscador);
+document.getElementById("cover-ctn-search").addEventListener("click", ocultar_buscador);
+
+//Declarando variables
+bars_search =       document.getElementById("ctn-bars-search");
+cover_ctn_search =  document.getElementById("cover-ctn-search");
+inputSearch =       document.getElementById("inputSearch");
+box_search =        document.getElementById("box-search");
+
+function cargarMonicionesBuscador(){
+    fetch(`http://localhost:7000/api/moniciones/`, {method: 'GET'})
+        .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
+        .then(monicion => {
+            let monicionAMostrar = document.querySelector('#box-search');
+            //console.log(monicion);
+            monicion.forEach(monicion => {
+                const row = document.createElement("li");
+                row.innerHTML += `
+                    <a href="/moniciones/${monicion.id}?titulo=${monicion.titulo}&dia=${monicion.dia}&semana=${monicion.semana}&ciclo=${monicion.ciclo}&tiempo=${monicion.tiempo}" target="_blank"><i class="fas fa-search"></i>${monicion.titulo} ${monicion.dia} ${monicion.semana} del tiempo ${monicion.tiempo} - <b>Ciclo ${monicion.ciclo}</b> <i class="fas fa-angle-double-right"></i></a>
+                `;
+                monicionAMostrar.appendChild(row);
+                })
+            })
+        .catch(error => console.log("Hubo un Error: " + error.message))
+}
+
+cargarMonicionesBuscador();
+
+//Funcion para mostrar el buscador
+function mostrar_buscador(){
+
+bars_search.style.top = "65px";
+cover_ctn_search.style.display = "block";
+inputSearch.focus();
+
+if (inputSearch.value === ""){
+box_search.style.display = "none";
+}
+}
+
+//Funcion para ocultar el buscador
+function ocultar_buscador(){
+
+bars_search.style.top = "-10px";
+cover_ctn_search.style.display = "none";
+inputSearch.value = "";
+box_search.style.display = "none";
+
+}
+
+//Creando filtrado de busqueda
+
+document.getElementById("inputSearch").addEventListener("keyup", buscador_interno);
+
+function buscador_interno(){
+
+filter = inputSearch.value.toUpperCase();
+li = box_search.getElementsByTagName("li");
+
+//Recorriendo elementos a filtrar mediante los "li"
+for (i = 0; i < li.length; i++){
+
+a = li[i].getElementsByTagName("a")[0];
+textValue = a.textContent || a.innerText;
+
+if(textValue.toUpperCase().indexOf(filter) > -1){
+
+li[i].style.display = "";
+box_search.style.display = "block";
+
+if (inputSearch.value === ""){
+box_search.style.display = "none";
+}
+
+}else{
+li[i].style.display = "none";
+}
+}
+}
+</script> 
+    </body>
 </html>

@@ -1,65 +1,63 @@
 <%- include ./layouts/cabecera.ejs %> 
-<br>
-
-<!-- SHOWCASE - Monicion del Dia-->
-<header class="showcase">
-  <div id="monicionDelDia"></div>
-</header>
-
-
-<h2>Moniciones Diarias</h2>
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="semanal"id="carousel1"></div>
+    <!-- SHOWCASE - Monicion del Dia-->
+    <div class="showcase">
+      <div id="monicionDelDia"></div>
     </div>
-    <div class="carousel-item">
-      <div class="semanal"id="carousel2"></div>
-    </div>
-    <div class="carousel-item">
-      <div class="semanal"id="carousel3"></div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-<br>
-<h2>Monicion Especial</h2>
-  <section class="banner-one">
-    <div class="container-lg" id="monicionFestividadPatronal"></div>	
-  </section>
 
-<h2>Moniciones Dominicales</h2>
-    <div class="card-group">
-      <div class="card">
-        <div class="dominical" id="mDominical1"></div>
+    <br><br>
+    <h2>Moniciones Diarias</h2>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-      <div class="card">
-        <div class="dominical" id="mDominical2"></div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="semanal"id="carousel1"></div>
+        </div>
+        <div class="carousel-item">
+          <div class="semanal"id="carousel2"></div>
+        </div>
+        <div class="carousel-item">
+          <div class="semanal"id="carousel3"></div>
+        </div>
       </div>
-      <div class="card">
-        <div class="dominical" id="mDominical3"></div>
-      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-
-<br>
-<h2>Monicion Mariana</h2>
-  <section class="banner-two" >
-    <div class="container-lg" id="monicionFestividadMariana"></div>
-  </section>
-
-
+    <br>
+    <h2>Monicion Especial</h2>
+      <section class="banner-one">
+        <div class="container-lg" id="monicionFestividadPatronal"></div>	
+      </section>
+    
+    <h2>Moniciones Dominicales</h2>
+        <div class="card-group">
+          <div class="card">
+            <div class="dominical" id="mDominical1"></div>
+          </div>
+          <div class="card">
+            <div class="dominical" id="mDominical2"></div>
+          </div>
+          <div class="card">
+            <div class="dominical" id="mDominical3"></div>
+          </div>
+        </div>
+      
+    <br>
+    <h2>Monicion Mariana</h2>
+      <section class="banner-two" >
+        <div class="container-lg" id="monicionFestividadMariana"></div>
+      </section>
+    
+    
 <script>
   function cargarMonicionDelDia(fecha){
     fetch(`http://localhost:7000/api/moniciones/fecha/${fecha}`, {method: 'GET'})
@@ -125,13 +123,6 @@ function funcionProgramada() {
   let anio = objFecha.getFullYear();
   cargarMonicionDelDia(anio + "-" + mes + "-" + dia);
 }
-
-
-
-
-
-
-
 
 function cargarMonicionElegida(id, idSelector){
     fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
