@@ -30,3 +30,38 @@
 	font-size: 20px;
 	text-align: center;
 }
+
+.cookies {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $negro;
+    opacity: 0.9;
+    color: $blanco;
+    text-align: center;
+    font-family: arial;
+    h5{
+        padding: 10px;
+    }
+    p {
+        margin-bottom: auto;
+    }
+}
+
+.cookies__boton {
+    margin: 16px;
+    background: initial;
+    border: 2px solid $blanco;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 1rem;
+    color: $blanco;
+    width: 5rem;
+    text-align: center;
+    &:hover {
+		color: $negro;
+        background: $blanco;
+        opacity: .8;
+    }
+}

@@ -80,8 +80,8 @@
                       <p>${monicion[0].lecturas}</p>
                       <h5>Oración Universal</h5>
                       <p>A cada intención respondemos: <b>${monicion[0].respuestaOracionUniversal}</b><br></p>
-                    <a class="btn btn-primary" id="boton${monicion[0].id}" onclick="cerrar('boton${monicion[0].id}');mostrar('flotante${monicion[0].id}')" >Leer más   <i class="fas fa-book-reader"></i></a>
-                    <div class="flotantes" id="flotante${monicion[0].id}">
+                    <a class="boton2" id="boton${monicion[0].id}${monicion[0].fecha}" onclick="cerrar('boton${monicion[0].id}${monicion[0].fecha}');mostrar('flotante${monicion[0].id}${monicion[0].fecha}')" >Leer más   <i class="fas fa-book-reader"></i></a>
+                    <div class="flotantes" id="flotante${monicion[0].id}${monicion[0].fecha}">
                       <ol>
                           <li>${monicion[0].oracionUniversal1} <b>Oremos.</b></li>
                           <li>${monicion[0].oracionUniversal2} <b>Oremos.</b></li>
@@ -95,7 +95,7 @@
                       <p>${monicion[0].comunion}</p>
                       <h5>Monición de Despedida</h5>
                       <p>${monicion[0].despedida}</p>
-                      <a class="btn btn-primary" onclick="mostrar('boton${monicion[0].id}');cerrar('flotante${monicion[0].id}')">Cerrar  <i class="far fa-times-circle"></i></a>
+                      <a class="boton2" onclick="mostrar('boton${monicion[0].id}${monicion[0].fecha}');cerrar('flotante${monicion[0].id}${monicion[0].fecha}')">Cerrar  <i class="far fa-times-circle"></i></a>
                     </div>
                   `;
                   monicionAMostrar.appendChild(row);
@@ -103,18 +103,18 @@
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
 
-function cargarMonicionElegida(id, idSelector){
-    fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
+function cargarMonicionElegida(fecha, idSelector){
+    fetch(`http://localhost:7000/api/moniciones/fecha/${fecha}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             const row = document.createElement("tr");
             let monicionAMostrar = document.querySelector(idSelector);
             row.innerHTML += `
-              <h4>${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana}</h4>
+              <h4>${monicion[0].titulo} ${monicion[0].dia} ${monicion[0].semana}</h4>
                 <p><b>Ciclo:</b> ${monicion[0].ciclo} - <b>Tiempo:</b> ${monicion[0].tiempo}</p>
                 <h5>Monición de Entrada</h5>
                     <p>${monicion[0].entrada}</p>
-                <a class="btn btn-primary m-3" id="boton${monicion[0].id}" onclick="cerrar('boton${monicion[0].id}');mostrar('flotante${monicion[0].id}')" >Leer más <i class="fas fa-book-reader"></i></a>
+                <a class="boton2" id="boton${monicion[0].id}" onclick="cerrar('boton${monicion[0].id}');mostrar('flotante${monicion[0].id}')" >Leer más <i class="fas fa-book-reader"></i></a>
                 <div class="flotantes" id="flotante${monicion[0].id}">
                     <h5>Monición de las Lecturas</h5>
                     <p>${monicion[0].lecturas}</p>
@@ -133,7 +133,7 @@ function cargarMonicionElegida(id, idSelector){
                     <p>${monicion[0].comunion}</p>
                     <h5>Monición de Despedida</h5>
                     <p>${monicion[0].despedida}</p>
-                    <a class="btn btn-primary m-2" onclick="mostrar('boton${monicion[0].id}');cerrar('flotante${monicion[0].id}')">Cerrar  <i class="far fa-times-circle"></i></a>
+                    <a class="boton2" onclick="mostrar('boton${monicion[0].id}');cerrar('flotante${monicion[0].id}')">Cerrar  <i class="far fa-times-circle"></i></a>
                 </div>
                 `;
             monicionAMostrar.appendChild(row);
@@ -141,8 +141,8 @@ function cargarMonicionElegida(id, idSelector){
     .catch(error => console.log("Hubo un Error: " + error.message))
 }
 
-cargarMonicionElegida('17', "#monicionFestividadPatronal");
-cargarMonicionElegida('3',"#monicionFestividadMariana");
+cargarMonicionElegida('2021-09-23', "#monicionFestividadPatronal");
+cargarMonicionElegida('2021-09-24',"#monicionFestividadMariana");
 
 function mostrar(id) {
     let elemento = document.getElementById(id);
@@ -164,7 +164,7 @@ function cargarMonicionCarousel(fecha, idSelector, img){
                   <a href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&dia=${monicion[0].dia}&semana=${monicion[0].semana}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank"><img src="${img}" class="d-block w-100" alt="Monición del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo}- Moniciones Liturgicas.com"></a>
                   <div class="carousel-caption d-none d-md-block">
                     <h5>Monicion del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo} - Ciclo ${monicion[0].ciclo}</h5>
-                    <a class="btn btn-light" href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&dia=${monicion[0].dia}&semana=${monicion[0].semana}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
+                    <a class="boton" href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&dia=${monicion[0].dia}&semana=${monicion[0].semana}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
                   </div>  
                     `;
                 monicionAMostrar.appendChild(row);

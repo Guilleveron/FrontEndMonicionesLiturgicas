@@ -1,28 +1,23 @@
-@mixin boton {
+.boton {
     cursor: pointer;
 	display: inline-block;
 	font-weight: bold;
 	padding: 10px 20px;
-	background: $blanco;
-	color: $primary;
+	background: $negroOpaco;
+	color: $blanco;
 	font-size: 15px;
-	border: 1px solid $primary;
-	border-radius: 10px;
+	border: 1px solid $negro;
+	border-radius: 8px;
 	margin: 10px;
 
     &:hover {
         opacity: .8;
+		color: $negro;
+		background: $blanco;
     }
 }
 
-.boton {
-	@include boton;
-    i:hover {
-        opacity: .8;
-    }
-}
-
-@mixin boton2 {
+.boton2 {
     cursor: pointer;
 	display: inline-block;
 	font-weight: bold;
@@ -31,18 +26,14 @@
 	color: $blanco;
 	font-size: 15px;
 	border: 1px solid $primary;
-	border-radius: 10px;
+	border-radius: 8px;
 	margin: 10px;
 
     &:hover {
-		color: $blanco;
-        opacity: .8;
+		opacity: .8;
+		color: $primary;
+		background: $blanco;
     }
 }
 
-.boton2 {
-	@include boton2;
-    i:hover {
-		opacity: .8;
-    }
-}
+
