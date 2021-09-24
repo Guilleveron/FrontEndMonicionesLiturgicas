@@ -29,7 +29,8 @@
 
 /* PANTALLAS PEQUEÑAS */
 
-@media(max-width:420px){
-
-    
+@media(max-width:768px){
+    #intro {
+        width: 90% !important;
+    }
 }
