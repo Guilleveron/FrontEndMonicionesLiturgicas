@@ -4,8 +4,7 @@
       <div id="monicionDelDia"></div>
     </div>
 
-    <br><br>
-    <h2>Moniciones Diarias</h2>
+    <h2 class="titulos">Moniciones Diarias</h2>
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -32,13 +31,13 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <br>
-    <h2>Monicion Especial</h2>
+    
+    <h2 class="titulos">Monicion Especial</h2>
       <section class="banner-one">
         <div class="container-lg" id="monicionFestividadPatronal"></div>	
       </section>
     
-    <h2>Moniciones Dominicales</h2>
+    <h2 class="titulos">Moniciones Dominicales</h2>
         <div class="card-group">
           <div class="card">
             <div class="dominical" id="mDominical1"></div>
@@ -52,7 +51,7 @@
         </div>
       
     <br>
-    <h2>Monicion Mariana</h2>
+    <h2 class="titulos">Monición Mariana</h2>
       <section class="banner-two" >
         <div class="container-lg" id="monicionFestividadMariana"></div>
       </section>
@@ -71,8 +70,8 @@
                 //alert(event.toLocaleDateString(undefined, options));
                 let dia = event.toLocaleDateString(undefined, options);
                 row.innerHTML += `
-                  <h3>Monicion del Día ${dia}</h3>
-                  <h4>${monicion[0].titulo} ${monicion[0].dia} ${monicion[0].semana}</h4>
+                  <h2>Monicion del Día ${dia}</h2>
+                  <h3>${monicion[0].titulo} ${monicion[0].dia} ${monicion[0].semana}</h3>
                     <p><b>Ciclo ${monicion[0].ciclo} - Tiempo ${monicion[0].tiempo}</b><img class="imgC" src="/images/casullaBlanco.svg" alt="Moniciones Litúrgicas"> </h5></p>
                     <h5>Monición de Entrada</h5>
                     <p>${monicion[0].entrada}</p>

@@ -8,11 +8,13 @@ $gris: #787878;
 $negroOpaco: #00000070;
 $negro: #000;
 
-@import "componentes/Buscador";
-@import "componentes/Ciclos";
+@import "componentes/buscador";
+@import "componentes/ciclos";
+@import "componentes/global";
 @import "componentes/index";
 @import "componentes/indexMoniciones";
 @import "componentes/layouts";
 @import "componentes/mixinsBotones";
 @import "componentes/nosotros";
+@import "componentes/responsive";
 @import "../node_modules/bootstrap/scss/bootstrap";
