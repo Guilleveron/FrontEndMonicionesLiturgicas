@@ -10,5 +10,9 @@ module.exports={
     nosotros: function (req, res){
         res.render('nosotros', {
             titulo: 'Sobre Nosotros'});
+    },
+    buscar: function (req, res){
+        res.render('buscadorDeMonicion', {
+            busqueda: req.query.monición});
     }
 }

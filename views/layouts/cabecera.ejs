@@ -15,7 +15,7 @@
   </head> 
   <body>
   <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light p-3" id="menu">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menu">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">
             <img src="/images/Logo.svg" alt="Moniciones Litúrgicas" title="Moniciones Litúrgicas" class="logo">
@@ -46,8 +46,8 @@
                 </ul>
               </li>
             </ul>
-            <form class="d-flex" id="ctn-bars-search">
-              <input class="form-control me-1" autocomplete="off" type="search" id="inputSearch" name="inputSearch" placeholder="Día, Semana, Solemnidad o Festividad">
+            <form method="get" action="/buscar" class="d-flex" id="ctn-bars-search" target="_blank">
+              <input class="form-control me-1" autocomplete="off" type="search" id="inputSearch" name="monición" placeholder="Día, Semana, Solemnidad o Festividad">
               <button class="btn btn-outline-primary" type="submit" value="Buscar">Buscar<i class="fas fa-search" ></i></button>
             </form>
           </div>
