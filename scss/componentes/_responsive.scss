@@ -3,26 +3,38 @@
 /* PANTALLAS EXTRA ANCHAS */
 @media(min-width: 1400px){
 
-    body{
-        font-size: 20px;
-    }
-
-
-    .showcase, .banner-One, .banner-two {
-        width: 95%;
-        margin: auto;
-    }
     header, .footer {
         width: 100%;
         margin: auto;
     }
+
+    .showcase, .banner-One, .banner-two {
+        width: 85%;
+        margin: auto;
+    }
+
+}
+
+/* PANTALLAS ANCHAS */
+@media(min-width: 1024px){
+
+    header, .footer {
+        width: 100%;
+        margin: auto;
+    }
+
+    .showcase, .banner-One, .banner-two {
+        width: 90%;
+        margin: auto;
+    }
+
 }
 
 /* PANTALLAS MEDIANAS */
 @media(max-width: 992px){
 
-    nav, .showcase, .footer {
-        width: 60%;
+    .showcase, .banner-One, .banner-two {
+        width: 95%;
         margin: auto;
     }
 }
@@ -30,7 +42,17 @@
 /* PANTALLAS PEQUEÑAS */
 
 @media(max-width:768px){
-    #intro {
-        width: 90% !important;
+    .showcase, .banner-One, .banner-two {
+        width: 100%;
+        margin: auto;
+    }
+    .footer {
+        padding-top: 0px;
+        min-height: 0px;
+        p {
+            font-size: 12px;
+            margin-bottom: 0px;
+            padding: 10px;
+        }
     }
 }

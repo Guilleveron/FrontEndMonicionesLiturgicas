@@ -1,94 +1,57 @@
 <%- include ./layouts/cabecera.ejs %>
 
-        <div class="buscadorMonicion">	
-            <form method="get" class="d-flex" id="ctn-bars-search2">
-                <input value="<%= busqueda %>" class="form-control me-1" autocomplete="off" type="search" id="inputSearch2" name="monición" placeholder="Día, Semana, Solemnidad o Festividad">
-                <button class="btn btn-outline-primary" type="submit" value="Buscar">Buscar<i class="fas fa-search" ></i></button>
+        <div class="buscadorMonicion">
+            <form method="get" class="d-flex" id="formularioBuscador">
+                <input name="monición" type="search" id="formulario" value="<%= busqueda %>" class="form-control me-1" autocomplete="off" placeholder="Día, Semana, Solemnidad o Festividad - Tiempo - Ciclo">
+                <button class="btn btn-outline-primary" id="botonFormulario" type="submit" value="Buscar">Buscar<i class="fas fa-search" ></i></button>
             </form>
 			
-            <ul id="box-search2"></ul>		
+            <ul id="resultado" class="resultadoBuscador"></ul>		
 		</div>
 
-
 <script>
-            //Buscador de contenido
-        
-//Ejecutando funciones
 
-        
-    //Declarando variables
-    bars_search2 =       document.getElementById("ctn-bars-search2");
-    inputSearch2 =       document.getElementById("inputSearch2");
-    box_search2 =        document.getElementById("box-search2");
-        
-        
-        async function cargarMonicionesBuscador2(){
+const formulario = document.querySelector('#formulario');
+const botonFormulario = document.querySelector('#botonFormulario');
+const resultado = document.querySelector('#resultado');
 
-            const response = await fetch(`http://localhost:7000/api/moniciones/`, {method: 'GET'})
-                .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
-                .then(monicion => {
-                    let monicionAMostrar = document.querySelector('#box-search2');
+const filtrar = () => {
+    //console.log(formulario.value);
+    resultado.innerHTML = '';
+
+    fetch(`http://localhost:7000/api/moniciones/`, {method: 'GET'})
+        .then(response => {return response.json()})//indicamos el formato en que se desea obtener la informacion
+        .then(moniciones => {
+            const texto = formulario.value.toLowerCase();
+             
+            for (let monicion of moniciones){
+
+                
+                let datosDebusqueda = monicion.titulo.toLocaleLowerCase() + " " + monicion.dia.toLocaleLowerCase() + " " + monicion.semana.toLocaleLowerCase() + " " + "- tiempo" + " " + monicion.tiempo.toLocaleLowerCase() + " - ciclo" + " " + monicion.ciclo.toLocaleLowerCase();
+                
+                if(datosDebusqueda.indexOf(texto) !== -1 ){
                     //console.log(monicion);
-                    monicion.forEach(monicion => {
-                        const row = document.createElement("li");
-                        row.innerHTML += `
-                            <a href="/moniciones/${monicion.id}?titulo=${monicion.titulo}&dia=${monicion.dia}&semana=${monicion.semana}&ciclo=${monicion.ciclo}&tiempo=${monicion.tiempo}" target="_blank"><i class="fas fa-search"></i>${monicion.titulo} ${monicion.dia} ${monicion.semana} - Tiempo ${monicion.tiempo} - Ciclo ${monicion.ciclo} <i class="fas fa-angle-double-right"></i></a>
-                        `;
-                        monicionAMostrar.appendChild(row);
-                        })
-                    })
-                .catch(error => console.log("Hubo un Error: " + error.message))
-
-            return await response;
-        }
-        
-        //cargarMonicionesBuscador2();
-        
-        //Funcion para mostrar el buscador
-        async function mostrar_buscador2(){
-            
-            inputSearch2.focus();
-        
-            if (inputSearch2.value === ""){
-            box_search2.style.display = "none";
-           
-            }if (inputSearch2.value != ""){
-                await cargarMonicionesBuscador2();
-                await buscador_interno2();
-            };
-        }
-        mostrar_buscador2();
-        
-        
-        
-        //Creando filtrado de busqueda
-        document.getElementById("inputSearch2").addEventListener("keyup", buscador_interno2);
-       
-        function buscador_interno2(){
-        
-            filter = inputSearch2.value.toUpperCase();
-            li = box_search2.getElementsByTagName("li");
-        
-            //Recorriendo elementos a filtrar mediante los "li"
-            for (i = 0; i < li.length; i++){
-        
-                a = li[i].getElementsByTagName("a")[0];
-                textValue = a.textContent || a.innerText;
-        
-                if(textValue.toUpperCase().indexOf(filter) > -1){
-        
-                    li[i].style.display = "";
-                    box_search2.style.display = "block";
-        
-                    if (inputSearch2.value === ""){
-                    box_search2.style.display = "none";
-                    }
-        
-                }else{
-                    li[i].style.display = "none";
+                    resultado.innerHTML += `
+                    <li><a href="/moniciones/${monicion.id}?titulo=${monicion.titulo}&dia=${monicion.dia}&semana=${monicion.semana}&ciclo=${monicion.ciclo}&tiempo=${monicion.tiempo}" target="_blank"><i class="fas fa-search"></i>${monicion.titulo} ${monicion.dia} ${monicion.semana} - Tiempo ${monicion.tiempo} - Ciclo ${monicion.ciclo} <i class="fas fa-angle-double-right"></i></a></li>
+                    `
                 }
             }
-        }
+            if(resultado.innerHTML === ''){
+                resultado.innerHTML += `
+                    <li>No se ha encontrado la monición</li>
+                    `
+            }        
+        })    
+        .catch(error => console.log("Hubo un Error: " + error.message))
+
+    
+}
+
+botonFormulario.addEventListener('click', filtrar)
+formulario.addEventListener('keyup', filtrar)
+
+filtrar();
+
 </script>
 <br>
 <%- include ./layouts/social.ejs %>

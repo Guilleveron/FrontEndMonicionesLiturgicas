@@ -3,7 +3,7 @@
 	top: 60px;
 	margin: 20px auto;
 	padding: 10px;
-	width: 80%;
+	width: 100%;
 	height: auto;
 	background: #2980B9;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
@@ -75,20 +75,6 @@
     margin-left: 10px;
 }
 
-#monicionElegida tr div {
-	display: none;
-	align-content: center;
-	margin: left;
-	width: 90%;
-	height: auto;
-	background: url('/imagesFondoBlancoCelesteyDorado.jpg') no-repeat center center/cover;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-	border-radius: 15px;
-	padding: 20px;
-}
-
 /* CARDS BANNER ONE */
 .banner-one {
 	background: #2980B9;  /* fallback for old browsers */
@@ -96,7 +82,7 @@
 	background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	align-content: center;
 	margin: auto;
-	width: 80%;
+	width: 100%;
 	height: auto;
 	margin-bottom: 20px;
 	display: flex;
@@ -134,7 +120,7 @@
 	background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     align-content: center;
 	margin: auto;
-	width: 80%;
+	width: 100%;
 	height: auto;
 	margin-bottom: 20px;
 	display: flex;
