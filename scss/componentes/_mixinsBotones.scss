@@ -2,14 +2,12 @@
     cursor: pointer;
 	display: inline-block;
 	font-weight: bold;
-	padding: 10px 20px;
+	padding: 6px 12px;
 	background: $negroOpaco;
 	color: $blanco;
-	font-size: 15px;
 	border: 1px solid $negro;
 	border-radius: 8px;
-	margin: 10px;
-
+	text-decoration: none;
     &:hover {
         opacity: .8;
 		color: $negro;
@@ -21,18 +19,34 @@
     cursor: pointer;
 	display: inline-block;
 	font-weight: bold;
-	padding: 10px 20px;
+	padding: 6px 12px;
 	background: $primary;
 	color: $blanco;
-	font-size: 15px;
 	border: 1px solid $primary;
 	border-radius: 8px;
-	margin: 10px;
-
+	text-decoration: none;
     &:hover {
 		opacity: .8;
 		color: $primary;
 		background: $blanco;
+    }
+}
+
+.boton3 {
+    cursor: pointer;
+	display: inline-block;
+	font-weight: bold;
+	padding: 6px 12px;
+	background: $primary;
+	color: $blanco;
+	border: 1px solid $blanco;
+	border-radius: 8px;
+	margin: 10px;
+	text-decoration: none;
+    &:hover {
+		color: $primary;
+		background: $blanco;
+		border: 1px solid $primary;
     }
 }
 

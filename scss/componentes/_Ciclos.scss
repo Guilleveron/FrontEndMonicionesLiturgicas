@@ -2,5 +2,14 @@
     position: relative;
 	top: 60px;
 	margin: 30px auto;
+    ul {
+        padding-left: 0;
+    }
 }
 
+.lista {
+    a {
+        font-size: 18px;
+        text-decoration: none;
+    }	
+}

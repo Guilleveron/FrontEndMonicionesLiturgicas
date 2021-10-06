@@ -7,52 +7,214 @@
         width: 100%;
         margin: auto;
     }
-
+    #box-search{
+        left: 74%;
+    }
     .showcase, .banner-One, .banner-two {
         width: 85%;
         margin: auto;
     }
-
+    #box-search{
+        left: 73%;
+    }
 }
 
-/* PANTALLAS ANCHAS */
+/* PANTALLAS ANCHAS (Notebooks y Computadoras de Escritorio) */
 @media(min-width: 1024px){
 
     header, .footer {
         width: 100%;
         margin: auto;
     }
-
+    #box-search{
+        left: 63%;
+    }
     .showcase, .banner-One, .banner-two {
         width: 90%;
         margin: auto;
     }
-
 }
 
 /* PANTALLAS MEDIANAS */
-@media(max-width: 992px){
+@media(max-width: 900px){
+
+    body {
+        p {
+            font-size: 14px;
+        }
+        a {
+            font-size: 14px;
+        }
+        li {
+            font-size: 14px;
+        }
+        h2 {
+            font-size: 30px;
+        }
+        h3 {
+            font-size: 26px;
+        }
+        h4 {
+            font-size: 22px;
+        }
+        h5 {
+            font-size: 18px;
+        }
+    }
 
     .showcase, .banner-One, .banner-two {
         width: 95%;
         margin: auto;
     }
+    #box-search{
+        left: 57%;
+    }
 }
 
-/* PANTALLAS PEQUEÑAS */
+/* PANTALLAS PEQUEÑAS (TABLETS)*/
 
-@media(max-width:768px){
+@media(max-width:767px){
+
+    #box-search{
+        top: 221px;
+        left: 0;
+        right: 0;
+        padding: 5px 18px;
+        border: none;
+    }
+    
     .showcase, .banner-One, .banner-two {
         width: 100%;
         margin: auto;
+    }
+    .showcase {
+        top: 61px;
+        padding: 5px;
+        h4 {
+            margin: 0;
+            margin-bottom: 0;
+        }
+        p {
+            margin: 0;
+            margin-bottom: 0;
+        }
+    }
+    .boton2 {
+        padding: 6px 6px;
+    }
+    .carousel-caption {
+        padding-top: 0!important;
+    }
+    .semanal {
+        h5{
+            padding: 5px 0;
+        }
     }
     .footer {
         padding-top: 0px;
         min-height: 0px;
         p {
-            font-size: 12px;
+           font-size: 10px; 
             margin-bottom: 0px;
-            padding: 10px;
+            padding: 5px 2px;
         }
+    }
+    .cookies {
+        h5{
+            padding: 5px;
+        }
+        p {
+            margin-bottom: auto;
+        }
+    }
+    
+    .cookies__boton {
+        margin: 16px;
+        background: initial;
+        border: 2px solid $blanco;
+        border-radius: 5px;
+        padding: 8px;
+        color: $blanco;
+        width: 5rem;
+        text-align: center;
+        &:hover {
+            color: $negro;
+            background: $blanco;
+            opacity: .8;
+        }
+    }
+    .sobreNosotros {
+        margin: 10px auto;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-radius: 15px;
+        border: 1px solid #000000;
+        h3 {
+            padding: 5px;
+            ;
+        }
+        p{
+            line-height : 17px;   
+        }
+    }
+    #todasLasMoniciones, #monicionCiclos {
+        margin: 18px auto;
+    }
+    .lista {
+        a {
+            font-size: 15px;
+        }	
+    }
+    
+}
+
+@media(max-width:516px){
+    .imgT {
+        max-width: 100px;
+        max-height: 100px;
+    }
+    #monicionCiclos {
+        h3 {
+            font-size: 24px;
+        }
+    }
+}
+
+
+/* PANTALLAS DE CELULARES */
+
+@media(max-width:400px){
+
+    body {
+        p {
+            font-size: 12px;
+        }
+        a {
+            font-size: 12px;
+        }
+        li {
+            font-size: 12px;
+        }
+        h2 {
+            font-size: 28px;
+        }
+        h3 {
+            font-size: 24px;
+        }
+        h4 {
+            font-size: 18px;
+            margin-bottom: 0px;
+        }
+        h5 {
+            font-size: 16px;
+            margin-bottom: 0px;
+        }
+    }
+    #box-search{
+        top: 212px;
     }
 }

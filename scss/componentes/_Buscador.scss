@@ -8,7 +8,7 @@
 #box-search{
     position: fixed;
     top: 61px;
-    left: 70%;
+    left: 67%;
     background: $blanco;
     z-index: 8;
     overflow: hidden;
@@ -31,7 +31,6 @@
             }
             i{
                 margin-right: 5px;
-                color: $primary;
                 &:hover{
                     color: $blanco;
                 }
