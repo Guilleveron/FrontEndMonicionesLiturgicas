@@ -7,7 +7,7 @@
             <h3>Moniciones Litúrgicas<br>Ciclo <%= ciclo %><br>Evangelio según San <%= santo %></h3>
         </div>
     </div>
-            <div class="accordion accordion-flush" id="accordionFlushExample1"">
+            <div class="accordion accordion-flush" id="accordionFlushExample1">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne1">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne1" aria-expanded="false" aria-controls="flush-collapseOne1">
@@ -89,38 +89,5 @@
             </div> 
 </div>
 
-
-<script>
-function cargarMoniciones(ciclo, tiempo, idSelector){
-    fetch(`http://localhost:7000/api/moniciones/ciclo/${ciclo}/tiempo/${tiempo}`, {method: 'GET'})
-        .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
-        .then(monicion => {
-            let monicionAMostrar = document.querySelector(idSelector);
-            //console.log(monicion);
-            monicion.forEach(monicion => {
-                const row = document.createElement("tr");
-                row.innerHTML += `
-                <ul>
-                    <li class="lista"><a href="/moniciones/${monicion.id}?titulo=${monicion.titulo}&dia=${monicion.dia}&semana=${monicion.semana}&ciclo=${monicion.ciclo}&tiempo=${monicion.tiempo}" target="_blank"><i class="fas fa-cross"></i> ${monicion.titulo} ${monicion.dia} ${monicion.semana}<i class="fas fa-angle-double-right"></i></a></li>
-                </ul>  
-                `;
-                monicionAMostrar.appendChild(row);
-                })
-            })
-        .catch(error => console.log("Hubo un Error: " + error.message))
-}
-
-cargarMoniciones('<%= ciclo%>', 'de Adviento', "#adviento");
-cargarMoniciones('A, B y C', 'de Navidad', "#navidad");
-cargarMoniciones('A, B y C', 'ordinario', "#ordinario1");
-cargarMoniciones('<%= ciclo%>', 'ordinario', "#ordinario2");
-cargarMoniciones('<%= ciclo%>', 'de cuaresma', "#cuaresma");
-cargarMoniciones('A, B y C', 'del triduo pascual', "#triduo");
-cargarMoniciones('<%= ciclo%>', 'Pascual', "#pascual1");
-cargarMoniciones('A, B y C', 'Pascual', "#pascual2");
-
-</script>
-
-<br>
 <%- include ./layouts/social.ejs %>
 <%- include ./layouts/pie.ejs %> 

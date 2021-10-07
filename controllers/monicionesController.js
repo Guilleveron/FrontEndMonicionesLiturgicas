@@ -3,7 +3,9 @@ module.exports={
     index:function(req,res){
 
         res.render('moniciones/index', { 
-            title: 'Página de'});
+            title: 'Página de',
+            script: ``
+        });
     },
     monicionId:function(req,res){
         //console.log(req.params);
@@ -13,14 +15,9 @@ module.exports={
             semana: req.query.semana,
             titulo: req.query.titulo,
             ciclo: req.query.ciclo,
-            tiempo: req.query.tiempo
-        });
-    },
-    ciclo:function(req,res){
-        //console.log(req.params);
-        res.render('ciclo', { 
-            ciclo: req.params.ciclo,
-            santo: req.query.santo
+            tiempo: req.query.tiempo,
+
+            script: ``
         });
     }
 }
