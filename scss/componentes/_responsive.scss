@@ -10,7 +10,10 @@
     #box-search{
         left: 74%;
     }
-    .showcase, .banner-One, .banner-two {
+    .showcase{
+        width: 85%;
+    }
+    .banner-One, .banner-two {
         width: 85%;
         margin: auto;
     }
@@ -28,8 +31,13 @@
     }
     #box-search{
         left: 63%;
+        top: 62px;
     }
-    .showcase, .banner-One, .banner-two {
+    .showcase{
+        width: 90%;
+        margin: 10px auto;
+    }
+    .banner-One, .banner-two {
         width: 90%;
         margin: auto;
     }
@@ -61,13 +69,24 @@
             font-size: 18px;
         }
     }
-
-    .showcase, .banner-One, .banner-two {
+    #menu{
+        button{
+            font-size: 14px;
+        }
+        input {
+            font-size: 14px;
+        }
+    }
+    .showcase{
+        width: 95%;
+    }
+    .banner-One, .banner-two {
         width: 95%;
         margin: auto;
     }
     #box-search{
         left: 57%;
+        top: 62px;
     }
 }
 
@@ -76,19 +95,19 @@
 @media(max-width:767px){
 
     #box-search{
-        top: 221px;
+        top: 215px;
         left: 0;
         right: 0;
         padding: 5px 18px;
         border: none;
     }
     
-    .showcase, .banner-One, .banner-two {
+    .banner-One, .banner-two {
         width: 100%;
         margin: auto;
     }
     .showcase {
-        top: 61px;
+        width: 100%;
         padding: 5px;
         h4 {
             margin: 0;
@@ -173,6 +192,10 @@
 }
 
 @media(max-width:516px){
+
+    .showcase {
+        margin: 5px auto;
+    }
     .imgT {
         max-width: 100px;
         max-height: 100px;
@@ -181,6 +204,9 @@
         h3 {
             font-size: 24px;
         }
+    }
+    .navbar-brand{
+        font-size: 16px!important;
     }
 }
 
@@ -214,7 +240,18 @@
             margin-bottom: 0px;
         }
     }
+    #menu{
+        button{
+            font-size: 12px;
+        }
+        input {
+            font-size: 12px;
+        }
+    }
+    .navbar-brand{
+        font-size: 14px!important;
+    }
     #box-search{
-        top: 212px;
+        top: 202px;
     }
 }

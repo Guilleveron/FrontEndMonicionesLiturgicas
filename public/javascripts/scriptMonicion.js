@@ -1,16 +1,14 @@
-<%- include ../layouts/cabecera.ejs %> 
-<div class="showcase">
-    <div id="monicionSeleccionada"></div>	
-</div>
- 
+//=================================== Pestaña para ver una Monición ===================================//
+var objUrlParams = new URLSearchParams(window.location.search);
+//console.log(objUrlParams.get('id'));
+let id = objUrlParams.get('id');
 
-<script>
- function cargarMonicionDelDia(posicionMonicion){
-    fetch(`http://localhost:7000/api/moniciones/<%= id%>`, {method: 'GET'})
+
+function cargarMonicion(){
+    fetch(`http://localhost:7000/api/moniciones/${id}`, {method: 'GET'})
         .then(respuesta =>{return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             //console.log(monicion);
-            //console.log(monicion[0].titulo);
             const row = document.createElement("tr");
                 let monicionAMostrar = document.querySelector('#monicionSeleccionada');
                 row.innerHTML += `
@@ -40,9 +38,4 @@
         })
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
-cargarMonicionDelDia();
-
-</script>
-<br>
-<%- include ../layouts/social.ejs %>
-<%- include ../layouts/pie.ejs %> 
+cargarMonicion();

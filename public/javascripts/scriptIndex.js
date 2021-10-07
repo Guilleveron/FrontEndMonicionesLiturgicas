@@ -104,7 +104,7 @@ function cargarMonicionCarousel(fecha, idSelector, img){
                   <a href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&dia=${monicion[0].dia}&semana=${monicion[0].semana}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank"><img src="${img}" class="d-block w-100" alt="Monición del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo}- Moniciones Liturgicas.com"></a>
                   <div class="carousel-caption d-md-block">
                     <h5>Monicion del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo} - Ciclo ${monicion[0].ciclo}</h5>
-                    <a class="boton" href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&dia=${monicion[0].dia}&semana=${monicion[0].semana}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
+                    <a class="boton" href="/monicion?titulo=${monicion[0].titulo}&dia=${monicion[0].dia}&semana=${monicion[0].semana}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}&id=${monicion[0].id}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
                   </div>  
                     `;
                 monicionAMostrar.appendChild(row);
@@ -122,7 +122,7 @@ function cargarMonicionD(fecha, idSelector, img){
                 <a href="/moniciones/${monicion[0].id}" target="_blank"><img src="${img}" class="card-img-top" alt="${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo} - MonicionesLitúrgicas.com"><a>
                     <div class="card-body">
                       <h5 class="card-title">Monicion del ${monicion[0].titulo} ${monicion[0].dia} de la Semana ${monicion[0].semana} del tiempo ${monicion[0].tiempo} - Ciclo ${monicion[0].ciclo}</h5>
-                        <a class="boton3" href="/moniciones/${monicion[0].id}?titulo=${monicion[0].titulo}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
+                        <a class="boton3" href="/monicion?titulo=${monicion[0].titulo}&ciclo=${monicion[0].ciclo}&tiempo=${monicion[0].tiempo}&id=${monicion[0].id}" target="_blank">Ver más <i class="fas fa-angle-double-right"></i></a>
                     </div>
                     `;
                 monicionAMostrar.appendChild(row);
