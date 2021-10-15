@@ -12,7 +12,7 @@ let inputSearch =       document.getElementById("inputSearch");
 let box_search =        document.getElementById("box-search");
 
 function cargarMonicionesBuscador(){
-    fetch(`http://localhost:7000/api/moniciones/`, {method: 'GET'})
+    fetch(`https://api-moniciones-liturgicas.herokuapp.com/api/moniciones/`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             let monicionAMostrar = document.querySelector('#box-search');
