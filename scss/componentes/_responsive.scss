@@ -10,12 +10,8 @@
     #box-search{
         left: 74%;
     }
-    .showcase{
+    .showcase, .banner-One, .banner-two{
         width: 85%;
-    }
-    .banner-One, .banner-two {
-        width: 85%;
-        margin: auto;
     }
     #box-search{
         left: 73%;
@@ -33,13 +29,9 @@
         left: 63%;
         top: 62px;
     }
-    .showcase{
+    .showcase, .banner-One, .banner-two{
         width: 90%;
         margin: 10px auto;
-    }
-    .banner-One, .banner-two {
-        width: 90%;
-        margin: auto;
     }
 }
 
@@ -77,16 +69,17 @@
             font-size: 14px;
         }
     }
-    .showcase{
+    .showcase, .banner-One, .banner-two{
         width: 95%;
-    }
-    .banner-One, .banner-two {
-        width: 95%;
-        margin: auto;
     }
     #box-search{
         left: 57%;
         top: 62px;
+    }
+    .footer{
+        p { 
+            font-size: 16px!important;
+        }
     }
 }
 
@@ -101,12 +94,7 @@
         padding: 5px 18px;
         border: none;
     }
-    
-    .banner-One, .banner-two {
-        width: 100%;
-        margin: auto;
-    }
-    .showcase {
+    .showcase, .banner-One, .banner-two {
         width: 100%;
         padding: 5px;
         h4 {
@@ -129,15 +117,6 @@
             padding: 5px 0;
         }
     }
-    .footer {
-        padding-top: 0px;
-        min-height: 0px;
-        p {
-           font-size: 10px; 
-            margin-bottom: 0px;
-            padding: 5px 2px;
-        }
-    }
     .cookies {
         h5{
             padding: 5px;
@@ -146,7 +125,6 @@
             margin-bottom: auto;
         }
     }
-    
     .cookies__boton {
         margin: 16px;
         background: initial;
@@ -182,19 +160,31 @@
     }
     #todasLasMoniciones, #monicionCiclos {
         margin: 18px auto;
+        ul{
+            margin-bottom: 8px;
+        }
     }
     .lista {
         a {
             font-size: 15px;
         }	
     }
-    
+    .footer{
+        p { 
+            font-size: 14px!important;
+        }
+    }
 }
 
 @media(max-width:516px){
 
-    .showcase {
+    .showcase, .banner-One, .banner-two{
         margin: 5px auto;
+    }
+    .banner-One, .banner-two{
+        p{
+            margin: 10px 0px;
+        }
     }
     .imgT {
         max-width: 100px;
@@ -208,6 +198,15 @@
     .navbar-brand{
         font-size: 16px!important;
     }
+    .footer{
+        p{
+            font-size: 12px!important;
+        }
+    }
+    .buscadorMonicion {
+        padding: 10px;
+    }
+    
 }
 
 
@@ -253,5 +252,15 @@
     }
     #box-search{
         top: 202px;
+    }
+    .footer{
+        p { 
+            font-size: 10px!important;
+        }
+    }
+    #formularioBuscador {
+        input, button {
+        font-size: 14px !important;
+        }
     }
 }
