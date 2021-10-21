@@ -1,4 +1,3 @@
-var conexion=require('../config/conexion');
 var monicio=require('../model/monicion');
 module.exports={
 
