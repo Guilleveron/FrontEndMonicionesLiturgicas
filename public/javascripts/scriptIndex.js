@@ -81,9 +81,6 @@ function cargarMonicionElegida(fecha, idSelector){
     .catch(error => console.log("Hubo un Error: " + error.message))
 }
 
-cargarMonicionElegida('2021-09-23', "#monicionFestividadPatronal");
-cargarMonicionElegida('2021-09-24',"#monicionFestividadMariana");
-
 function mostrar(id) {
     let elemento = document.getElementById(id);
     elemento.style.display = 'inline-block';
@@ -130,11 +127,6 @@ function cargarMonicionD(fecha, idSelector, img){
         .catch(error => console.log("Hubo un Error: " + error.message))
 }
 
-
-window.onload = function ejemplo2(){
-  setTimeout('funcionProgramada()', hora());
-}
-
 function hora() {
   horaActual = new Date();
   horaProgramada = new Date();
@@ -178,7 +170,54 @@ function funcionProgramada() {
   //console.log(anio4 + "-" + mes4 + "-" + dia4);
 }
 
+function funcionProgramadaDomingo() {
+  let objFecha = new Date();
+  //console.log(objFecha);
 
-cargarMonicionD('2021-09-26', "#mDominical1", "/images/Martes.jpg");
-cargarMonicionD('2021-10-03', "#mDominical2", "/images/Miercoles.jpg");
-cargarMonicionD('2021-10-10', "#mDominical3", "/images/Jueves.jpg");
+  let numeroASumarFecha = null;
+
+  if (objFecha.getDay() == 0){
+    numeroASumarFecha = 7;
+  }else if(objFecha.getDay() == 1){
+    numeroASumarFecha = 6;
+  }else if(objFecha.getDay() == 2){
+    numeroASumarFecha = 5;
+  }else if(objFecha.getDay() == 3){
+    numeroASumarFecha = 4;
+  }else if(objFecha.getDay() == 4){
+    numeroASumarFecha = 3;
+  }else if(objFecha.getDay() == 5){
+    numeroASumarFecha = 2;
+  }else if(objFecha.getDay() == 6){
+    numeroASumarFecha = 1;
+  };
+  //console.log(numeroASumarFecha);
+  
+  let objFecha2 = sumarDias(objFecha, numeroASumarFecha);
+  let dia2  = ('0' + objFecha2.getDate()).slice(-2);
+  let mes2  = ('0' + (objFecha2.getMonth()+1)).slice(-2);
+  let anio2 = objFecha2.getFullYear();
+  cargarMonicionD(anio2 + "-" + mes2 + "-" + dia2, "#mDominical1", "/images/Martes.jpg");
+  //console.log(anio2 + "-" + mes2 + "-" + dia2);
+
+  let objFecha3 = sumarDias(objFecha, 7);
+  let dia3  = ('0' + objFecha3.getDate()).slice(-2);
+  let mes3  = ('0' + (objFecha3.getMonth()+1)).slice(-2);
+  let anio3 = objFecha3.getFullYear();
+  cargarMonicionD(anio3 + "-" + mes3 + "-" + dia3, "#mDominical2", "/images/Miercoles.jpg");
+  //console.log(anio3 + "-" + mes3 + "-" + dia3);
+
+  let objFecha4 = sumarDias(objFecha, 7);
+  let dia4  = ('0' + objFecha4.getDate()).slice(-2);
+  let mes4  = ('0' + (objFecha4.getMonth()+1)).slice(-2);
+  let anio4 = objFecha4.getFullYear();
+  cargarMonicionD(anio4 + "-" + mes4 + "-" + dia4, "#mDominical3", "/images/Jueves.jpg");
+  //console.log(anio4 + "-" + mes4 + "-" + dia4);
+}
+
+window.onload = function ejemplo2(){
+  setTimeout('funcionProgramada()', hora());
+  cargarMonicionElegida('2021-09-23', "#monicionFestividadPatronal");
+  cargarMonicionElegida('2021-09-24',"#monicionFestividadMariana");
+  funcionProgramadaDomingo();
+}
