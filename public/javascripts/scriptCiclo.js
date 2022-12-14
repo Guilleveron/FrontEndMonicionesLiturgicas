@@ -1,6 +1,6 @@
 //=================================== Pestaña de Ciclos ===================================//
 function cargarMoniciones(ciclo, tiempo, idSelector){
-    fetch(`https://api-moniciones-liturgicas.herokuapp.com/api/moniciones/ciclo/${ciclo}/tiempo/${tiempo}`, {method: 'GET'})
+    fetch(`https://apimonicionesliturgicas.fly.dev/api/moniciones/ciclo/${ciclo}/tiempo/${tiempo}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             let monicionAMostrar = document.querySelector(idSelector);

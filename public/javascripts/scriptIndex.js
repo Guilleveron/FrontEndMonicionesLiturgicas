@@ -1,6 +1,6 @@
 //=================================== INDEX ===================================//
 function cargarMonicionDelDia(fecha){
-    fetch(`https://api-moniciones-liturgicas.herokuapp.com/api/moniciones/fecha/${fecha}`, {method: 'GET'})
+    fetch(`https://apimonicionesliturgicas.fly.dev/api/moniciones/fecha/${fecha}`, {method: 'GET'})
         .then(respuesta =>{return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             //console.log(monicion[0].fecha);
@@ -44,7 +44,7 @@ function cargarMonicionDelDia(fecha){
 }
 
 function cargarMonicionElegida(fecha, idSelector){
-    fetch(`https://api-moniciones-liturgicas.herokuapp.com/api/moniciones/fecha/${fecha}`, {method: 'GET'})
+    fetch(`https://apimonicionesliturgicas.fly.dev/api/moniciones/fecha/${fecha}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             const row = document.createElement("tr");
@@ -92,7 +92,7 @@ function cerrar(id) {
 }
 
 function cargarMonicionCarousel(fecha, idSelector, img){
-    fetch(`https://api-moniciones-liturgicas.herokuapp.com/api/moniciones/fecha/${fecha}`, {method: 'GET'})
+    fetch(`https://apimonicionesliturgicas.fly.dev/api/moniciones/fecha/${fecha}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             let monicionAMostrar = document.querySelector(idSelector);
@@ -110,7 +110,7 @@ function cargarMonicionCarousel(fecha, idSelector, img){
 }
 
 function cargarMonicionD(fecha, idSelector, img){
-    fetch(`https://api-moniciones-liturgicas.herokuapp.com/api/moniciones/fecha/${fecha}`, {method: 'GET'})
+    fetch(`https://apimonicionesliturgicas.fly.dev/api/moniciones/fecha/${fecha}`, {method: 'GET'})
         .then(respuesta => {return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             let monicionAMostrar = document.querySelector(idSelector);

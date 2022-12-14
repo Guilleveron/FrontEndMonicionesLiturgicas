@@ -7,7 +7,7 @@ const filtrar = () => {
     //console.log(formulario.value);
     resultado.innerHTML = '';
 
-    fetch(`https://api-moniciones-liturgicas.herokuapp.com/api/moniciones/`, {method: 'GET'})
+    fetch(`https://apimonicionesliturgicas.fly.dev/api/moniciones/`, {method: 'GET'})
         .then(response => {return response.json()})//indicamos el formato en que se desea obtener la informacion
         .then(moniciones => {
             const texto = formulario.value.toLowerCase();

@@ -5,7 +5,7 @@ let id = objUrlParams.get('id');
 
 
 function cargarMonicion(){
-    fetch(`https://api-moniciones-liturgicas.herokuapp.com/api/moniciones/${id}`, {method: 'GET'})
+    fetch(`https://apimonicionesliturgicas.fly.dev/api/moniciones/${id}`, {method: 'GET'})
         .then(respuesta =>{return respuesta.json()})//indicamos el formato en que se desea obtener la informacion
         .then(monicion => {
             //console.log(monicion);
